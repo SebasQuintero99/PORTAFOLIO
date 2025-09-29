@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Calendar } from "lucide-react";
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, Calendar } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -236,7 +236,7 @@ export default function ContactSection() {
           >
             {/* Contact Methods */}
             <div className="space-y-4">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((info) => (
                 <motion.a
                   key={info.title}
                   variants={itemVariants}

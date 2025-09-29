@@ -282,7 +282,7 @@ export default function SkillsSection() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {softSkills.map((skill, index) => (
+            {softSkills.map((skill) => (
               <motion.div key={skill.title} variants={itemVariants}>
                 <Card className="h-full group hover:shadow-xl transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm overflow-hidden">
                   <CardContent className="p-6 relative">
