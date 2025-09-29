@@ -24,14 +24,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    description: "sebastian.quintero@example.com",
-    href: "mailto:sebastian.quintero@example.com",
-  },
-  {
-    icon: Phone,
-    title: "Teléfono",
-    description: "+57 300 123 4567",
-    href: "tel:+573001234567",
+    description: "juansebastianquinteroortiz@gmail.com",
+    href: "mailto:juansebastianquinteroortiz@gmail.com",
   },
   {
     icon: MapPin,
@@ -51,7 +45,7 @@ const socialLinks = [
   {
     icon: Github,
     name: "GitHub",
-    href: "https://github.com/sebastianquintero",
+    href: "https://github.com/sebasquintero99",
     color: "hover:text-gray-900 dark:hover:text-white",
   },
   {
@@ -69,7 +63,7 @@ const socialLinks = [
   {
     icon: Mail,
     name: "Email",
-    href: "mailto:sebastian.quintero@example.com",
+    href: "mailto:juansebastianquinteroortiz@gmail.com",
     color: "hover:text-red-500",
   },
 ];
@@ -324,9 +318,9 @@ export default function ContactSection() {
             Gracias por visitar mi portafolio. ¡Espero poder trabajar contigo pronto!
           </p>
           <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground/60">
-            <span>© 2024 Sebastián Quintero</span>
+            <span>© 2025 Sebastián Quintero</span>
             <span>•</span>
-            <span>Desarrollado con ❤️ y Next.js</span>
+            <span>Desarrollado con Next.js</span>
           </div>
         </motion.div>
       </div>

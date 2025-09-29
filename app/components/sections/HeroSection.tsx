@@ -130,7 +130,7 @@ export default function HeroSection() {
             className="flex items-center justify-center space-x-6 mb-16"
           >
             <a
-              href="https://github.com/sebastianquintero"
+              href="https://github.com/sebasquintero99"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors duration-200 group"
@@ -138,7 +138,7 @@ export default function HeroSection() {
               <Github className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://linkedin.com/in/sebastianquintero"
+              href="https://linkedin.com/in/https://www.linkedin.com/in/juan-sebastian-quintero-ortiz-659004296/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors duration-200 group"
@@ -146,7 +146,7 @@ export default function HeroSection() {
               <Linkedin className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="mailto:sebastian@example.com"
+              href="mailto:juansebastianquinteroortiz@gmail.com"
               className="p-3 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors duration-200 group"
             >
               <Mail className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
