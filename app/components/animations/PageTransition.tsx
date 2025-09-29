@@ -20,7 +20,7 @@ const pageVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: "easeOut" as const,
     },
   },
   out: {
@@ -29,7 +29,7 @@ const pageVariants = {
     scale: 1.02,
     transition: {
       duration: 0.4,
-      ease: "easeIn",
+      ease: "easeIn" as const,
     },
   },
 };
@@ -68,7 +68,7 @@ export function ScrollAnimation({
       transition={{
         duration: 0.8,
         delay,
-        ease: [0.25, 0.25, 0, 1],
+        ease: "easeOut" as const,
       }}
       className={className}
     >
@@ -104,7 +104,7 @@ export function StaggerContainer({
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };

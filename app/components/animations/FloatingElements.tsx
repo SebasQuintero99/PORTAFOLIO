@@ -43,7 +43,7 @@ export function FloatingElement({
       transition={{
         duration,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       }}
     />
   );

@@ -51,7 +51,7 @@ export default function SlideIn({
   const getTransition = () => ({
     duration,
     delay: stagger ? 0 : delay,
-    ease: "easeOut",
+    ease: "easeOut" as const,
   });
 
   return (

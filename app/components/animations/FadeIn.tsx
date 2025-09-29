@@ -50,7 +50,7 @@ export default function FadeIn({
       transition={{
         duration,
         delay,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       }}
       className={className}
     >
