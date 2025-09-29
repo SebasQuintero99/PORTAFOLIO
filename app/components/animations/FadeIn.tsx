@@ -22,36 +22,36 @@ export default function FadeIn({
   className,
   once = true,
 }: FadeInProps) {
-  const directionOffset = {
-    up: { y: distance },
-    down: { y: -distance },
-    left: { x: distance },
-    right: { x: -distance },
-  };
-
-  const variants = {
-    hidden: {
-      opacity: 0,
-      ...directionOffset[direction],
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration,
-        delay,
-        ease: [0.25, 0.25, 0, 1],
-      },
-    },
+  const getInitialState = () => {
+    const baseState = { opacity: 0 };
+    switch (direction) {
+      case "up":
+        return { ...baseState, y: distance };
+      case "down":
+        return { ...baseState, y: -distance };
+      case "left":
+        return { ...baseState, x: distance };
+      case "right":
+        return { ...baseState, x: -distance };
+      default:
+        return { ...baseState, y: distance };
+    }
   };
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={getInitialState()}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+      }}
       viewport={{ once }}
-      variants={variants}
+      transition={{
+        duration,
+        delay,
+        ease: "easeOut",
+      }}
       className={className}
     >
       {children}

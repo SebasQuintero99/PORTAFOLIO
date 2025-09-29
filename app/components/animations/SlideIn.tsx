@@ -26,65 +26,40 @@ export default function SlideIn({
   stagger = false,
   staggerDelay = 0.1,
 }: SlideInProps) {
-  const directionOffset = {
-    left: { x: -distance },
-    right: { x: distance },
-    up: { y: -distance },
-    down: { y: distance },
+  const getInitialState = () => {
+    const baseState = { opacity: 0 };
+    switch (direction) {
+      case "left":
+        return { ...baseState, x: -distance };
+      case "right":
+        return { ...baseState, x: distance };
+      case "up":
+        return { ...baseState, y: -distance };
+      case "down":
+        return { ...baseState, y: distance };
+      default:
+        return { ...baseState, x: -distance };
+    }
   };
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: stagger ? staggerDelay : 0,
-      },
-    },
-  };
+  const getAnimateState = () => ({
+    opacity: 1,
+    x: 0,
+    y: 0,
+  });
 
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      ...directionOffset[direction],
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration,
-        delay: stagger ? 0 : delay,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  if (stagger) {
-    return (
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once }}
-        variants={containerVariants}
-        className={className}
-      >
-        {Array.isArray(children)
-          ? children.map((child, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                {child}
-              </motion.div>
-            ))
-          : children}
-      </motion.div>
-    );
-  }
+  const getTransition = () => ({
+    duration,
+    delay: stagger ? 0 : delay,
+    ease: "easeOut",
+  });
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={getInitialState()}
+      whileInView={getAnimateState()}
       viewport={{ once }}
-      variants={itemVariants}
+      transition={getTransition()}
       className={className}
     >
       {children}
