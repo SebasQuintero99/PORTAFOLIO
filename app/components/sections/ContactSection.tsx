@@ -116,7 +116,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ export default function ContactSection() {
             </motion.div>
 
             {/* Response Time */}
-            <motion.div
+            {/* <motion.div
               variants={itemVariants}
               className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-6"
             >
@@ -297,9 +297,9 @@ export default function ContactSection() {
                 Generalmente respondo en menos de 24 horas. 
                 Para proyectos urgentes, no dudes en llamarme directamente.
               </p>
-            </motion.div>
+            </motion.div> */}
 
-            {/* Availability */}
+            {/* Availability
             <motion.div
               variants={itemVariants}
               className="bg-green-500/10 rounded-lg p-6 border border-green-500/20"
@@ -311,7 +311,7 @@ export default function ContactSection() {
               <p className="text-sm text-muted-foreground">
                 Actualmente acepto nuevos proyectos freelance y oportunidades de colaboración.
               </p>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
 

@@ -72,19 +72,19 @@ const technicalSkills = [
       { name: "Prettier", icon: SiPrettier, color: "#F7B93E" },
     ],
   },
-  {
-    category: "Librerías & Frameworks",
-    skills: [
-      { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
-      { name: "Zustand", icon: TbDatabase, color: "#443E38" },
-      { name: "React Hook Form", icon: FaReact, color: "#EC5990" },
-      { name: "Zod", icon: Code2, color: "#3E67B1" },
-      { name: "Shadcn/ui", icon: Palette, color: "#000000" },
-      { name: "Lucide Icons", icon: Zap, color: "#F56565" },
-      { name: "Chart.js", icon: FaDatabase, color: "#FF6384" },
-      { name: "Three.js", icon: Code2, color: "#000000" },
-    ],
-  },
+  // {
+  //   category: "Librerías & Frameworks",
+  //   skills: [
+  //     { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+  //     { name: "Zustand", icon: TbDatabase, color: "#443E38" },
+  //     { name: "React Hook Form", icon: FaReact, color: "#EC5990" },
+  //     { name: "Zod", icon: Code2, color: "#3E67B1" },
+  //     { name: "Shadcn/ui", icon: Palette, color: "#000000" },
+  //     { name: "Lucide Icons", icon: Zap, color: "#F56565" },
+  //     { name: "Chart.js", icon: FaDatabase, color: "#FF6384" },
+  //     { name: "Three.js", icon: Code2, color: "#000000" },
+  //   ],
+  // },
   {
     category: "Backend & Databases",
     skills: [
@@ -175,7 +175,7 @@ const itemVariants = {
 export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -216,7 +216,7 @@ export default function SkillsSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {technicalSkills.map((category, categoryIndex) => (
               <motion.div key={category.category} variants={itemVariants}>

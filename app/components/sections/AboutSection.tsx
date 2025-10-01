@@ -51,7 +51,7 @@ const itemVariants = {
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 lg:py-32 bg-secondary/5">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export default function AboutSection() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Soy un desarrollador frontend apasionado por crear experiencias web excepcionales. 
-            Con más de 3 años de experiencia, me especializo en tecnologías modernas como React, Next.js y TypeScript.
+            Con más de 1 años de experiencia, me especializo en tecnologías modernas como React, Next.js y TypeScript.
           </p>
         </motion.div>
 
@@ -155,11 +155,11 @@ export default function AboutSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">3+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">1+</div>
               <p className="text-sm text-muted-foreground">Años de experiencia</p>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">20+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">7+</div>
               <p className="text-sm text-muted-foreground">Proyectos completados</p>
             </div>
             <div className="space-y-2">
