@@ -30,8 +30,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Ubicación",
-    description: "Medellín, Colombia",
-    href: "https://maps.google.com/?q=Medellin,Colombia",
+    description: "Neiva, Colombia",
+    href: "https://maps.google.com/?q=Neiva,Colombia",
   },
   {
     icon: Calendar,
