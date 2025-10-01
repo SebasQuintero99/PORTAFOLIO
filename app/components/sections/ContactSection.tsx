@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Send, Github, Linkedin, Twitter, Calendar } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import * as z from "zod";
 
 const contactSchema = z.object({
@@ -37,7 +38,7 @@ const contactInfo = [
     icon: Calendar,
     title: "Disponibilidad",
     description: "Lun - Vie, 8:00 AM - 6:00 PM",
-    href: "https://calendly.com/sebastian-quintero",
+    href: "#",
   },
 ];
 
@@ -243,6 +244,14 @@ export default function ContactSection() {
                   href={info.href}
                   target={info.href.startsWith("http") ? "_blank" : undefined}
                   rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  onClick={(e) => {
+                    if (info.href === "#") {
+                      e.preventDefault();
+                      toast.info("Funcionalidad en proceso", {
+                        description: "Estamos trabajando en esta función. ¡Pronto estará disponible!",
+                      });
+                    }
+                  }}
                   className="flex items-center space-x-4 p-4 rounded-lg bg-secondary/10 hover:bg-secondary/20 transition-colors group"
                 >
                   <div className="flex-shrink-0 p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
