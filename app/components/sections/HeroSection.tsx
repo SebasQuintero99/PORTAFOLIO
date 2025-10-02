@@ -69,7 +69,7 @@ export default function HeroSection() {
               {/* Image container */}
               <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-background">
                 <img
-                  src="/profile.jpg"
+                  src="/avatar-Photoroom.png"
                   alt="Sebastián Quintero"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
