@@ -13,8 +13,10 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
 - **📱 Totalmente Responsivo**: Optimizado para móviles, tablets y desktop
 - **🌙 Modo Oscuro/Claro**: Cambio de tema suave con persistencia
 - **⚡ Animaciones Fluidas**: Utilizando Framer Motion para transiciones elegantes
+- **✨ Efecto Parallax con Estrellas**: Fondo animado con estrellas que crean profundidad
 - **🎯 Navegación Intuitiva**: Scroll suave con indicadores de sección activa
 - **📧 Formulario de Contacto**: Validación completa con Zod y React Hook Form
+- **📨 Envío de Emails**: Integración con EmailJS para mensajes reales
 - **🔍 SEO Optimizado**: Meta tags, Open Graph y estructuración semántica
 - **⚡ Alto Rendimiento**: Optimizado con Next.js 15 y mejores prácticas
 
@@ -30,11 +32,14 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
 - **Shadcn/ui** - Sistema de componentes accesibles
 - **Framer Motion** - Biblioteca de animaciones
 - **Lucide React** - Iconografía moderna
+- **React Icons** - Iconos de tecnologías
 - **next-themes** - Gestión de temas
+- **Sonner** - Notificaciones toast elegantes
 
 ### Herramientas
 - **React Hook Form** - Gestión de formularios
 - **Zod** - Validación de esquemas
+- **EmailJS** - Envío de emails desde el frontend
 - **ESLint** - Linting de código
 - **Geist Font** - Tipografía optimizada
 
@@ -61,7 +66,18 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
    pnpm install
    ```
 
-3. **Ejecuta el servidor de desarrollo**
+3. **Configura las variables de entorno**
+
+   Crea un archivo `.env.local` en la raíz del proyecto:
+   ```bash
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=tu_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=tu_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=tu_public_key
+   ```
+
+   Ver [EMAILJS_SETUP.md](EMAILJS_SETUP.md) para instrucciones detalladas de configuración.
+
+4. **Ejecuta el servidor de desarrollo**
    ```bash
    npm run dev
    # o
@@ -70,8 +86,8 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
    pnpm dev
    ```
 
-4. **Abre tu navegador**
-   
+5. **Abre tu navegador**
+
    Visita [http://localhost:3000](http://localhost:3000) para ver el resultado.
 
 ## 📁 Estructura del Proyecto
@@ -91,7 +107,9 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
 │   │   │   ├── ProjectsSection.tsx
 │   │   │   └── ContactSection.tsx
 │   │   └── ui/                 # Componentes de UI
-│   │       └── Navigation.tsx
+│   │       ├── Navigation.tsx
+│   │       ├── Footer.tsx
+│   │       └── ParallaxStars.tsx
 │   ├── globals.css             # Estilos globales y variables CSS
 │   ├── layout.tsx              # Layout principal con metadata
 │   └── page.tsx                # Página principal
@@ -128,9 +146,10 @@ Un portafolio web moderno y responsivo construido con las últimas tecnologías 
 
 ### 📧 Contact Section
 - Formulario con validación completa
+- Envío de emails reales con EmailJS
 - Información de contacto interactiva
 - Enlaces a redes sociales
-- Indicadores de disponibilidad
+- Notificaciones toast de éxito/error
 
 ## 🎯 Comandos Disponibles
 
@@ -181,11 +200,25 @@ export const metadata: Metadata = {
 
 ### Vercel (Recomendado)
 1. Conecta tu repositorio en [Vercel](https://vercel.com)
-2. El despliegue se realiza automáticamente en cada push
+2. Configura las variables de entorno en **Settings > Environment Variables**:
+   - `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
+   - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`
+   - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
+3. El despliegue se realiza automáticamente en cada push
+
+### Variables de Entorno en Producción
+Para que el formulario de contacto funcione en producción, asegúrate de configurar las variables de entorno de EmailJS en tu plataforma de hosting.
+
+**En Vercel:**
+1. Ve a tu proyecto > Settings > Environment Variables
+2. Agrega las 3 variables de EmailJS
+3. Selecciona todos los entornos (Production, Preview, Development)
+4. Redespliega el proyecto
 
 ### Netlify
 1. Construye el proyecto: `npm run build`
-2. Despliega la carpeta `.next` en Netlify
+2. Configura las variables de entorno en Netlify
+3. Despliega la carpeta `.next` en Netlify
 
 ### Otros Proveedores
 El proyecto es compatible con cualquier proveedor que soporte Next.js.
