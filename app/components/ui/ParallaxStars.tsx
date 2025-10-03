@@ -44,7 +44,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
       {stars.map((star) => (
         <motion.div
           key={star.id}
-          className="absolute rounded-full bg-primary"
+          className="absolute rounded-full bg-primary/60 dark:bg-primary"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,
@@ -67,7 +67,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
         >
           {/* Efecto de brillo */}
           <motion.div
-            className="absolute inset-0 rounded-full bg-primary blur-sm"
+            className="absolute inset-0 rounded-full bg-primary/40 dark:bg-primary blur-sm"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.5, 1, 0.5],
@@ -86,7 +86,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
       {[1, 2, 3].map((i) => (
         <motion.div
           key={`shooting-${i}`}
-          className="absolute w-1 h-1 bg-primary rounded-full"
+          className="absolute w-1 h-1 bg-primary/70 dark:bg-primary rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 50}%`,
@@ -105,7 +105,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
             ease: "easeOut",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-transparent blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 dark:from-primary to-transparent blur-sm" />
         </motion.div>
       ))}
     </div>

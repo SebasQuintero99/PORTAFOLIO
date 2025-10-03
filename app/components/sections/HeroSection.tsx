@@ -53,13 +53,13 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative group mx-auto mb-8 lg:mb-0 lg:float-left lg:mr-10 lg:mt-2"
+            className="relative group mx-auto mb-8 lg:mb-0 lg:float-left lg:mr-10 lg:mt-2 flex justify-center"
             style={{
               shapeOutside: 'circle(50%)',
               clipPath: 'circle(50%)'
             }}
           >
-            <div className="relative w-64 h-64 lg:w-[280px] lg:h-[280px] flex-shrink-0">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-[280px] lg:h-[280px] flex-shrink-0">
               {/* Animated border gradient */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary rounded-full animate-spin-slow"
                    style={{ animationDuration: '3s' }}

@@ -155,51 +155,38 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <motion.div
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
-        variants={{
-          open: {
-            opacity: 1,
-            height: "auto",
-            transition: {
-              duration: 0.3,
-              ease: "easeOut",
-            },
-          },
-          closed: {
-            opacity: 0,
-            height: 0,
-            transition: {
-              duration: 0.3,
-              ease: "easeIn",
-            },
-          },
-        }}
-        className="md:hidden overflow-hidden bg-background/95 backdrop-blur-lg border-b border-border/40"
-      >
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border/40"
+        >
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col space-y-2">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.href}
-                href={item.href}
+                type="button"
                 onClick={(e) => {
-                  e.preventDefault();
+                  e.stopPropagation();
                   handleNavClick(item.href);
                 }}
-                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left w-full cursor-pointer active:scale-95 ${
                   activeSection === item.href.substring(1)
                     ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/20"
+                    : "text-muted-foreground active:text-foreground active:bg-secondary/20"
                 }`}
+                style={{ touchAction: 'manipulation' }}
               >
                 {item.label}
-              </a>
+              </button>
             ))}
           </div>
         </div>
-      </motion.div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 }
