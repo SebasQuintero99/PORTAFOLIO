@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
+import { useRef, useMemo } from "react";
 
 interface Star {
   id: number;
@@ -25,68 +25,62 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
     offset: ["start end", "end start"]
   });
 
-  // Generar estrellas aleatorias
-  const stars: Star[] = Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    opacity: Math.random() * 0.5 + 0.3,
-    speed: Math.random() * 100 + 50, // Velocidad de parallax
-    delay: Math.random() * 2,
-  }));
+  // Generar estrellas aleatorias una sola vez con useMemo
+  const stars: Star[] = useMemo(() =>
+    Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      opacity: Math.random() * 0.5 + 0.3,
+      speed: Math.random() * 100 + 50,
+      delay: Math.random() * 2,
+    })),
+    [count]
+  );
 
   return (
     <div ref={containerRef} className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      {stars.map((star) => {
-        // Diferentes capas de profundidad con diferentes velocidades de parallax
-        const y = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [0, star.speed]
-        );
-
-        return (
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          className="absolute rounded-full bg-primary"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: star.size,
+            height: star.size,
+            opacity: star.opacity,
+          }}
+          initial={{ scale: 0, opacity: 0, y: 0 }}
+          whileInView={{
+            scale: [0, 1.2, 1],
+            opacity: [0, star.opacity * 1.5, star.opacity],
+            y: [0, star.speed],
+          }}
+          viewport={{ once: false }}
+          transition={{
+            duration: 1.5,
+            delay: star.delay,
+            ease: "easeOut"
+          }}
+        >
+          {/* Efecto de brillo */}
           <motion.div
-            key={star.id}
-            className="absolute rounded-full bg-primary"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: star.size,
-              height: star.size,
-              opacity: star.opacity,
-              y,
+            className="absolute inset-0 rounded-full bg-primary blur-sm"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.5, 1, 0.5],
             }}
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{
-              scale: [0, 1.2, 1],
-              opacity: [0, star.opacity * 1.5, star.opacity],
-            }}
-            viewport={{ once: false }}
             transition={{
-              duration: 1.5,
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
               delay: star.delay,
-              ease: "easeOut"
             }}
-          >
-            {/* Efecto de brillo */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-primary blur-sm"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: star.delay,
-              }}
-            />
-          </motion.div>
-        );
-      })}
+          />
+        </motion.div>
+      ))}
 
       {/* Estrellas fugaces ocasionales */}
       {[1, 2, 3].map((i) => (

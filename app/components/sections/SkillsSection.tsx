@@ -25,7 +25,6 @@ import {
   FaFigma,
   // Backend & Databases
   FaNodeJs,
-  FaDatabase,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -36,7 +35,6 @@ import {
   SiWebpack,
   SiEslint,
   SiPrettier,
-  SiFramer,
   SiMongodb,
   SiPostgresql,
   SiFirebase,
@@ -44,7 +42,7 @@ import {
   SiPrisma,
   SiSupabase,
 } from "react-icons/si";
-import { TbApi, TbDatabase } from "react-icons/tb";
+import { TbApi } from "react-icons/tb";
 
 const technicalSkills = [
   {

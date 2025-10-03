@@ -24,7 +24,6 @@ export default function SlideIn({
   className,
   once = true,
   stagger = false,
-  staggerDelay = 0.1,
 }: SlideInProps) {
   const getInitialState = () => {
     const baseState = { opacity: 0 };
