@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Palette, Rocket, Users } from "lucide-react";
+import ParallaxStars from "@/app/components/ui/ParallaxStars";
 
 const values = [
   {
@@ -32,26 +33,32 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.6,
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 15,
     },
   },
 };
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 lg:py-32 bg-secondary/5">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+    <section id="about" className="relative py-20 lg:py-32 bg-secondary/5 overflow-hidden">
+      {/* Parallax Stars */}
+      <ParallaxStars count={60} />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,9 +66,9 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
+          {/* <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
             Sobre mí
-          </span>
+          </span> */}
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Transformando ideas en{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">

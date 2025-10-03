@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Code2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
@@ -80,9 +80,9 @@ export default function Navigation() {
                 e.preventDefault();
                 handleNavClick("#hero");
               }}
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:scale-105 transition-transform"
+              className="hover:scale-105 transition-transform flex items-center ml-4"
             >
-              SQ
+              <Code2 className="w-10 h-10 text-primary" />
             </a>
           </motion.div>
 

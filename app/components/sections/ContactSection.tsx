@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import * as z from "zod";
+import ParallaxStars from "@/app/components/ui/ParallaxStars";
+import emailjs from "@emailjs/browser";
 
 const contactSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -55,12 +57,12 @@ const socialLinks = [
     href: "https://linkedin.com/in/sebastianquintero",
     color: "hover:text-blue-600",
   },
-  {
-    icon: Twitter,
-    name: "Twitter",
-    href: "https://twitter.com/sebastianquintero",
-    color: "hover:text-blue-400",
-  },
+  // {
+  //   icon: Twitter,
+  //   name: "Twitter",
+  //   href: "https://twitter.com/sebastianquintero",
+  //   color: "hover:text-blue-400",
+  // },
   {
     icon: Mail,
     name: "Email",
@@ -104,19 +106,43 @@ export default function ContactSection() {
 
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log("Form data:", data);
-    alert("¡Mensaje enviado exitosamente! Te responderé pronto.");
-    reset();
-    setIsSubmitting(false);
+
+    try {
+      // Enviar email usando EmailJS
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_name: "Sebastián Quintero",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      console.log("Email enviado exitosamente:", result.text);
+      toast.success("¡Mensaje enviado!", {
+        description: "Gracias por contactarme. Te responderé pronto.",
+      });
+      reset();
+    } catch (error) {
+      console.error("Error al enviar email:", error);
+      toast.error("Error al enviar mensaje", {
+        description: "Por favor, intenta de nuevo o contáctame directamente por email.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-32">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+    <section id="contact" className="relative py-20 lg:py-0 overflow-hidden">
+      {/* Parallax Stars */}
+      <ParallaxStars count={75} />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -124,9 +150,9 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
+          {/* <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
             Contacto
-          </span>
+          </span> */}
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Hablemos sobre tu{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -134,7 +160,7 @@ export default function ContactSection() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            ¿Tienes una idea increíble? ¿Necesitas ayuda con tu proyecto? 
+            ¿Tienes una idea increíble? ¿Necesitas ayuda con tu proyecto?
             Me encantaría escuchar sobre él y explorar cómo puedo ayudarte a hacerlo realidad.
           </p>
         </motion.div>
@@ -314,24 +340,6 @@ export default function ContactSection() {
             </motion.div> */}
           </motion.div>
         </div>
-
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-20 pt-12 border-t border-border/40"
-        >
-          <p className="text-muted-foreground mb-4">
-            Gracias por visitar mi portafolio. ¡Espero poder trabajar contigo pronto!
-          </p>
-          <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground/60">
-            <span>© 2025 Sebastián Quintero</span>
-            <span>•</span>
-            <span>Desarrollado con Next.js</span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -2,16 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Code2, 
-  Palette, 
-  Users, 
-  MessageCircle, 
-  Target, 
+import {
+  Code2,
+  Palette,
+  Users,
+  MessageCircle,
+  Target,
   Zap,
   Heart,
   Lightbulb
 } from "lucide-react";
+import ParallaxStars from "@/app/components/ui/ParallaxStars";
 import {
   // Frontend
   FaReact,
@@ -156,26 +157,33 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.6,
+      type: "spring" as const,
+      stiffness: 120,
+      damping: 18,
     },
   },
 };
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 lg:py-32">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+    <section id="skills" className="relative py-20 lg:py-32 overflow-hidden">
+      {/* Parallax Stars */}
+      <ParallaxStars count={70} />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -184,9 +192,9 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
+          {/* <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
             Habilidades
-          </span>
+          </span> */}
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Stack tecnológico &{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -219,8 +227,12 @@ export default function SkillsSection() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {technicalSkills.map((category, categoryIndex) => (
-              <motion.div key={category.category} variants={itemVariants}>
-                <Card className="h-full group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm">
+              <motion.div
+                key={category.category}
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { type: "spring" as const, stiffness: 300, damping: 20 } }}
+              >
+                <Card className="h-full group hover:shadow-2xl transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h4 className="text-lg font-bold text-center mb-6 group-hover:text-primary transition-colors">
                       {category.category}
@@ -232,15 +244,21 @@ export default function SkillsSection() {
                         return (
                           <motion.div
                             key={skill.name}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                             viewport={{ once: true }}
-                            transition={{ 
-                              duration: 0.4, 
-                              delay: categoryIndex * 0.1 + skillIndex * 0.05 
+                            transition={{
+                              type: "spring" as const,
+                              stiffness: 200,
+                              damping: 20,
+                              delay: categoryIndex * 0.1 + skillIndex * 0.05
                             }}
-                            whileHover={{ scale: 1.05 }}
-                            className="flex flex-col items-center p-4 rounded-lg hover:bg-primary/10 transition-all duration-200 cursor-default group/skill border border-transparent hover:border-primary/20"
+                            whileHover={{
+                              scale: 1.15,
+                              rotate: 5,
+                              transition: { type: "spring" as const, stiffness: 400, damping: 10 }
+                            }}
+                            className="flex flex-col items-center p-4 rounded-lg hover:bg-primary/10 transition-all duration-200 cursor-default group/skill border border-transparent hover:border-primary/20 hover:shadow-lg"
                           >
                             <div className="mb-3 group-hover/skill:scale-110 transition-transform duration-200">
                               <IconComponent 

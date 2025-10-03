@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Eye } from "lucide-react";
+import ParallaxStars from "@/app/components/ui/ParallaxStars";
 
 const projects = [
   {
@@ -109,18 +110,22 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 40, rotateX: -15 },
   visible: {
     opacity: 1,
     y: 0,
+    rotateX: 0,
     transition: {
-      duration: 0.6,
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 20,
     },
   },
 };
@@ -155,6 +160,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
     <motion.div
       variants={itemVariants}
       className="group"
+      whileHover={{
+        y: -12,
+        scale: 1.03,
+        transition: { type: "spring" as const, stiffness: 300, damping: 25 }
+      }}
     >
       <Card className="h-full overflow-hidden border-0 bg-background/50 backdrop-blur-sm group-hover:shadow-2xl transition-all duration-500">
         <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
@@ -250,8 +260,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 lg:py-32 bg-secondary/5">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+    <section id="projects" className="relative py-20 lg:py-32 bg-secondary/5 overflow-hidden">
+      {/* Parallax Stars */}
+      <ParallaxStars count={65} />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -259,9 +272,9 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
+          {/* <span className="inline-block text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full mb-4">
             Proyectos
-          </span>
+          </span> */}
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Mis últimos{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
