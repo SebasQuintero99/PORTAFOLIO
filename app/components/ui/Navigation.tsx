@@ -133,6 +133,7 @@ export default function Navigation() {
               size="sm"
               onClick={toggleTheme}
               className="p-2"
+              suppressHydrationWarning
             >
               {theme === "dark" ? (
                 <Sun className="w-4 h-4" />
