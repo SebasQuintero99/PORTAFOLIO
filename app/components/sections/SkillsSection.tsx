@@ -230,7 +230,7 @@ export default function SkillsSection() {
                 variants={itemVariants}
                 whileHover={{ y: -8, transition: { type: "spring" as const, stiffness: 300, damping: 20 } }}
               >
-                <Card className="h-full group hover:shadow-2xl transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm">
+                <Card className="h-full group hover:shadow-2xl transition-all duration-300 border border-border/40 bg-card/80 backdrop-blur-sm hover:border-primary/30">
                   <CardContent className="p-6">
                     <h4 className="text-lg font-bold text-center mb-6 group-hover:text-primary transition-colors">
                       {category.category}
@@ -300,7 +300,7 @@ export default function SkillsSection() {
           >
             {softSkills.map((skill) => (
               <motion.div key={skill.title} variants={itemVariants}>
-                <Card className="h-full group hover:shadow-xl transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm overflow-hidden">
+                <Card className="h-full group hover:shadow-xl transition-all duration-300 border border-border/40 bg-card/80 backdrop-blur-sm overflow-hidden hover:border-primary/30">
                   <CardContent className="p-6 relative">
                     <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
                     

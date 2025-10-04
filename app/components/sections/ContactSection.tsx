@@ -165,7 +165,7 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 lg:items-start">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -174,8 +174,9 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3"
           >
-            <Card className="border-0 bg-background/50 backdrop-blur-sm">
-              <CardContent className="p-8">
+            <Card className="border-0 bg-background/50 backdrop-blur-sm h-full">
+              <CardContent className="pt-0 px-8 pb-8">
+                <h3 className="text-2xl font-bold mb-6 text-center">Contacto</h3>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -259,7 +260,7 @@ export default function ContactSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-8 pt-8"
           >
             {/* Contact Methods */}
             <div className="space-y-4">
