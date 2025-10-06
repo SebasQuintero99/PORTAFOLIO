@@ -138,7 +138,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-20 lg:py-0 overflow-hidden">
+    <section id="contact" className="relative py-12 lg:py-16 overflow-hidden">
       {/* Parallax Stars */}
       <ParallaxStars count={75} />
 

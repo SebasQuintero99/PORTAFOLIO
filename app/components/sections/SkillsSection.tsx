@@ -177,7 +177,7 @@ const itemVariants = {
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="relative py-20 lg:py-32 overflow-hidden">
+    <section id="skills" className="relative py-12 lg:py-16 overflow-hidden">
       {/* Parallax Stars */}
       <ParallaxStars count={70} />
 

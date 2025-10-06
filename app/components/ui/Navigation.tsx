@@ -18,7 +18,12 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -133,13 +138,12 @@ export default function Navigation() {
               size="sm"
               onClick={toggleTheme}
               className="p-2"
-              suppressHydrationWarning
             >
-              {theme === "dark" ? (
+              {mounted && (theme === "dark" ? (
                 <Sun className="w-4 h-4" />
               ) : (
                 <Moon className="w-4 h-4" />
-              )}
+              ))}
             </Button>
 
             {/* Mobile menu button */}

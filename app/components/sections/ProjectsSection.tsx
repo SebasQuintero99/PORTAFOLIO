@@ -1,107 +1,110 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Eye } from "lucide-react";
+import { ExternalLink, Github, X } from "lucide-react";
 import ParallaxStars from "@/app/components/ui/ParallaxStars";
+import Image from "next/image";
+import { toast } from "sonner";
+import { useState, useEffect } from "react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Plataforma de comercio electrónico completa con carrito de compras, sistema de pagos, gestión de inventario y panel administrativo.",
-    image: "/images/project1.jpg",
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
+    title: "MiAbogada - Sistema Legal",
+    description: "Sistema web completo para gestión de citas legales con integración a Google Calendar, panel administrativo dinámico y notificaciones automáticas por email.",
+    image: "/miAbogada.png",
+    technologies: ["React", "Vite", "Node.js", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
     features: [
-      "Autenticación de usuarios",
-      "Sistema de pagos integrado",
-      "Panel de administración",
-      "Responsive design"
+      "Sistema de citas inteligente",
+      "Integración Google Calendar",
+      "Panel admin con dashboard",
+      "Emails automáticos profesionales"
     ],
-    liveUrl: "https://ecommerce-demo.com",
-    githubUrl: "https://github.com/sebastianquintero/ecommerce",
-    status: "Completado",
-    category: "Full-Stack"
-  },
-  {
-    title: "Task Management App",
-    description: "Aplicación de gestión de tareas con drag & drop, colaboración en tiempo real, notificaciones y sincronización entre dispositivos.",
-    image: "/images/project2.jpg",
-    technologies: ["React", "Firebase", "Framer Motion", "Zustand"],
-    features: [
-      "Drag & drop interface",
-      "Colaboración en tiempo real",
-      "Notificaciones push",
-      "Sincronización offline"
-    ],
-    liveUrl: "https://taskmanager-demo.com",
-    githubUrl: "https://github.com/sebastianquintero/task-manager",
-    status: "Completado",
-    category: "Frontend"
-  },
-  {
-    title: "Portfolio Website",
-    description: "Sitio web corporativo moderno con CMS personalizado, optimización SEO, animaciones fluidas y diseño responsive.",
-    image: "/images/project3.jpg",
-    technologies: ["Next.js", "Sanity CMS", "GSAP", "Tailwind CSS"],
-    features: [
-      "CMS personalizado",
-      "Optimización SEO",
-      "Animaciones GSAP",
-      "Performance optimizada"
-    ],
-    liveUrl: "https://corporate-website.com",
-    githubUrl: "https://github.com/sebastianquintero/corporate-site",
-    status: "Completado",
-    category: "Frontend"
-  },
-  {
-    title: "Weather Dashboard",
-    description: "Dashboard meteorológico interactivo con gráficos en tiempo real, pronósticos extendidos y geolocalización automática.",
-    image: "/images/project4.jpg",
-    technologies: ["React", "Chart.js", "OpenWeather API", "Geolocation API"],
-    features: [
-      "Datos en tiempo real",
-      "Gráficos interactivos",
-      "Geolocalización",
-      "Pronósticos extendidos"
-    ],
-    liveUrl: "https://weather-dashboard-demo.com",
-    githubUrl: "https://github.com/sebastianquintero/weather-dashboard",
-    status: "En desarrollo",
-    category: "Frontend"
-  },
-  {
-    title: "Social Media Analytics",
-    description: "Plataforma de análisis de redes sociales con métricas avanzadas, reportes automatizados y visualizaciones interactivas.",
-    image: "/images/project5.jpg",
-    technologies: ["Next.js", "D3.js", "Node.js", "MongoDB", "JWT"],
-    features: [
-      "Análisis de métricas",
-      "Reportes automatizados",
-      "Visualizaciones D3.js",
-      "Autenticación JWT"
-    ],
-    liveUrl: "https://social-analytics.com",
-    githubUrl: "https://github.com/sebastianquintero/social-analytics",
+    liveUrl: "https://github.com/SebasQuintero99/LandingPageMiAbogada",
+    githubUrl: "https://github.com/SebasQuintero99/LandingPageMiAbogada",
     status: "En desarrollo",
     category: "Full-Stack"
   },
   {
-    title: "Learning Platform",
-    description: "Plataforma educativa con cursos interactivos, sistema de progreso, certificaciones y comunidad de estudiantes.",
-    image: "/images/project6.jpg",
-    technologies: ["Next.js", "Prisma", "NextAuth", "Stripe", "Socket.io"],
+    title: "Sistema de Gestión de Permisos",
+    description: "Aplicación empresarial para gestión de solicitudes de permisos laborales con flujo de aprobación jerárquico y firmas digitales.",
+    image: "/permisosForm.png",
+    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker", "JWT"],
     features: [
-      "Cursos interactivos",
-      "Sistema de progreso",
-      "Certificaciones",
-      "Chat en tiempo real"
+      "Flujo de aprobación jerárquico",
+      "Firmas digitales",
+      "Generación de PDFs",
+      "Notificaciones en tiempo real"
     ],
-    liveUrl: "https://learning-platform.com",
-    githubUrl: "https://github.com/sebastianquintero/learning-platform",
-    status: "Planificado",
+    liveUrl: "https://github.com/SebasQuintero99/APP-GESTION-PERMISOS",
+    githubUrl: "https://github.com/SebasQuintero99/APP-GESTION-PERMISOS",
+    status: "En desarrollo",
     category: "Full-Stack"
+  },
+  {
+    title: "Los Peligrosos - Torneo Golf",
+    description: "Sistema web completo para gestión de torneos del Club Los Peligrosos Neiva con liquidaciones automáticas, códigos QR y exportación PDF/Excel.",
+    image: "/golf2.png",
+    technologies: ["React 19", "Node.js", "Express", "PostgreSQL", "Sequelize", "Tailwind CSS", "Vite"],
+    features: [
+      "CRUD de torneos y jugadores",
+      "Sistema de liquidación automática",
+      "Generación QR y exportación",
+      "Autenticación JWT con roles"
+    ],
+    liveUrl: "https://lospeligrososgolf.com/",
+    githubUrl: "https://github.com/SebasQuintero99/losPeligrosos-app",
+    status: "Completado",
+    category: "Full-Stack"
+  },
+  {
+    title: "Consulta Procesos - Bot Telegram",
+    description: "Bot de Telegram para gestión de procesos legales con base de datos MySQL, permitiendo registro y consulta de abogados, plataformas y procesos.",
+    image: "/botTelegrma.png",
+    technologies: ["Node.js", "Telegraf", "MySQL", "JavaScript"],
+    features: [
+      "Interfaz conversacional Telegram",
+      "Gestión de procesos legales",
+      "Registro de abogados y plataformas",
+      "Arquitectura modular"
+    ],
+    liveUrl: "https://github.com/SebasQuintero99/CONSULTA-PROCESOS",
+    githubUrl: "https://github.com/SebasQuintero99/CONSULTA-PROCESOS",
+    status: "Completado",
+    category: "Backend"
+  },
+  {
+    title: "Sistema de Gestión Académica",
+    description: "Plataforma completa para gestión académica con control de acceso basado en roles, gestión de programas, asignaturas, docentes y horarios con validación de conflictos.",
+    image: "/laboratorios.png",
+    technologies: ["Node.js", "Express", "MySQL", "EJS", "JWT", "JavaScript"],
+    features: [
+      "Autenticación JWT con roles",
+      "Gestión de horarios y laboratorios",
+      "Validación de conflictos automática",
+      "Dashboard dinámico por permisos"
+    ],
+    liveUrl: "https://uscolaboratorios.site/login",
+    githubUrl: "https://github.com/SebasQuintero99/DISCOTECA",
+    status: "Completado",
+    category: "Full-Stack"
+  },
+  {
+    title: "Portafolio Web Profesional",
+    description: "Portafolio moderno y responsive con Next.js 15, modo oscuro/claro, animaciones suaves con Framer Motion y formulario de contacto integrado.",
+    image: "/portafolio.png",
+    technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "EmailJS"],
+    features: [
+      "Diseño totalmente responsive",
+      "Modo oscuro/claro",
+      "Animaciones fluidas",
+      "Formulario con EmailJS"
+    ],
+    liveUrl: "https://www.sebastianquintero.dev/",
+    githubUrl: "https://github.com/SebasQuintero99/PORTAFOLIO",
+    status: "Completado",
+    category: "Frontend"
   }
 ];
 
@@ -142,115 +145,155 @@ interface Project {
   category: string;
 }
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project, onImageClick }: { project: Project; onImageClick: () => void }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Completado":
-        return "bg-green-500/20 text-green-600";
+        return "bg-green-500/90 text-white border-green-500";
       case "En desarrollo":
-        return "bg-yellow-500/20 text-yellow-600";
+        return "bg-yellow-500/90 text-white border-yellow-500";
       case "Planificado":
-        return "bg-blue-500/20 text-blue-600";
+        return "bg-blue-500/90 text-white border-blue-500";
       default:
-        return "bg-gray-500/20 text-gray-600";
+        return "bg-gray-500/90 text-white border-gray-500";
     }
   };
 
   return (
     <motion.div
       variants={itemVariants}
-      className="group"
+      className="group h-full"
       whileHover={{
-        y: -12,
-        scale: 1.03,
-        transition: { type: "spring" as const, stiffness: 300, damping: 25 }
+        y: -8,
+        transition: { type: "spring" as const, stiffness: 300, damping: 20 }
       }}
     >
-      <Card className="h-full overflow-hidden border-0 bg-background/50 backdrop-blur-sm group-hover:shadow-2xl transition-all duration-500">
-        <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-          {/* Placeholder for project image */}
-          <div className="w-16 h-16 bg-primary/30 rounded-full flex items-center justify-center">
-            <Eye className="w-8 h-8 text-primary" />
-          </div>
-          <div className="absolute top-4 left-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
+      <Card className="h-full overflow-hidden border border-border/50 bg-card hover:border-primary/50 transition-all duration-300 flex flex-col">
+        {/* Image Section */}
+        <div
+          className="relative h-56 w-full overflow-hidden bg-muted cursor-pointer"
+          onClick={onImageClick}
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+
+          {/* Badges */}
+          <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10 gap-2">
+            <span className={`px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg border ${getStatusColor(project.status)}`}>
               {project.status}
             </span>
-          </div>
-          <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 rounded-full text-xs font-medium bg-secondary/20 text-secondary">
+            <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-background/90 text-foreground border border-border shadow-lg backdrop-blur-sm">
               {project.category}
             </span>
           </div>
         </div>
 
-        <CardContent className="p-6 space-y-4">
-          <div>
-            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+        {/* Content Section */}
+        <CardContent className="p-5 flex-1 flex flex-col gap-4">
+          {/* Title & Description */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
               {project.title}
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
               {project.description}
             </p>
           </div>
 
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech: string) => (
+          <div className="flex flex-wrap gap-1.5">
+            {project.technologies.slice(0, 4).map((tech: string) => (
               <span
                 key={tech}
-                className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium"
+                className="px-2.5 py-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs rounded-md font-medium transition-colors"
               >
                 {tech}
               </span>
             ))}
+            {project.technologies.length > 4 && (
+              <span className="px-2.5 py-1 bg-muted text-muted-foreground text-xs rounded-md font-medium">
+                +{project.technologies.length - 4}
+              </span>
+            )}
           </div>
 
           {/* Features */}
-          <div className="space-y-2">
-            <h4 className="text-sm font-semibold">Características principales:</h4>
+          <div className="space-y-1.5 flex-1">
             <ul className="text-xs text-muted-foreground space-y-1">
-              {project.features.map((feature: string) => (
-                <li key={feature} className="flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-primary rounded-full flex-shrink-0" />
-                  <span>{feature}</span>
+              {project.features.slice(0, 3).map((feature: string) => (
+                <li key={feature} className="flex items-start gap-2">
+                  <span className="text-primary mt-1">✓</span>
+                  <span className="flex-1">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Actions */}
-          <div className="flex space-x-2 pt-4">
-            <Button
-              variant="default"
-              size="sm"
-              className="flex-1 group/btn"
-              asChild
-            >
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="flex gap-2 pt-2 border-t border-border/50">
+            {project.title === "Sistema de Gestión Académica" ? (
+              <Button
+                variant="default"
+                size="sm"
+                className="flex-1 group/btn h-9"
+                onClick={() => toast.info('Repositorio Privado', {
+                  description: 'El código fuente no está disponible públicamente por contener información sensible del proyecto.',
+                  duration: 5000,
+                })}
               >
-                <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-0.5 transition-transform" />
-                Ver Demo
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex-1 group/btn"
-              asChild
-            >
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                <Github className="w-3.5 h-3.5 mr-2" />
+                GitHub
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                size="sm"
+                className="flex-1 group/btn h-9"
+                asChild
               >
-                <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                Código
-              </a>
-            </Button>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-3.5 h-3.5 mr-2 group-hover/btn:rotate-12 transition-transform" />
+                  GitHub
+                </a>
+              </Button>
+            )}
+            {project.liveUrl.includes('github.com') ? (
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 h-9 cursor-not-allowed opacity-60"
+                disabled
+              >
+                <span className="text-xs">🚀 Pronto disponible</span>
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 group/btn h-9"
+                asChild
+              >
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-3.5 h-3.5 mr-2 group-hover/btn:translate-x-0.5 transition-transform" />
+                  Ver más
+                </a>
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -259,8 +302,22 @@ const ProjectCard = ({ project }: { project: Project }) => {
 };
 
 export default function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   return (
-    <section id="projects" className="relative py-20 lg:py-32 bg-secondary/5 overflow-hidden">
+    <section id="projects" className="relative py-12 lg:py-16 bg-secondary/5 overflow-hidden">
       {/* Parallax Stars */}
       <ParallaxStars count={65} />
 
@@ -282,7 +339,7 @@ export default function ProjectsSection() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Aquí tienes una selección de proyectos que he desarrollado recientemente. 
+            Aquí tienes una selección de proyectos que he desarrollado recientemente.
             Cada uno representa diferentes desafíos técnicos y soluciones creativas que he implementado.
           </p>
         </motion.div>
@@ -295,9 +352,170 @@ export default function ProjectsSection() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              onImageClick={() => setSelectedProject(project)}
+            />
           ))}
         </motion.div>
+
+        {/* Image Modal */}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm overflow-y-auto"
+              onClick={() => setSelectedProject(null)}
+            >
+              <div className="min-h-screen flex items-center justify-center p-4 py-16 sm:py-20">
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  className="relative max-w-5xl w-full bg-background rounded-xl shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="absolute top-3 right-3 z-20 p-2 bg-background hover:bg-muted rounded-full border border-border shadow-lg transition-all"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  {/* Image Container */}
+                  <div className="relative w-full h-[45vh] sm:h-[50vh] bg-muted rounded-t-xl overflow-hidden">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                    priority
+                  />
+                </div>
+
+                {/* Project Info */}
+                <div className="p-4 sm:p-6 border-t border-border space-y-4 sm:space-y-6">
+                  {/* Header with badges */}
+                  <div className="space-y-3">
+                    <div className="flex gap-2 flex-wrap">
+                      <span className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold shadow-lg border ${
+                        selectedProject.status === "Completado"
+                          ? "bg-green-500/90 text-white border-green-500"
+                          : selectedProject.status === "En desarrollo"
+                          ? "bg-yellow-500/90 text-white border-yellow-500"
+                          : "bg-blue-500/90 text-white border-blue-500"
+                      }`}>
+                        {selectedProject.status}
+                      </span>
+                      <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold bg-background/90 text-foreground border border-border shadow-lg">
+                        {selectedProject.category}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2">{selectedProject.title}</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground">{selectedProject.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Technologies */}
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 text-muted-foreground uppercase tracking-wide">Tecnologías</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 sm:px-3 sm:py-1.5 bg-primary/10 hover:bg-primary/20 text-primary text-xs sm:text-sm rounded-md font-medium transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Features */}
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 text-muted-foreground uppercase tracking-wide">Características principales</h4>
+                    <ul className="grid gap-2 text-xs sm:text-sm">
+                      {selectedProject.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2">
+                          <span className="text-primary mt-0.5 text-sm sm:text-base">✓</span>
+                          <span className="flex-1">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2">
+                    {selectedProject.title === "Sistema de Gestión Académica" ? (
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="flex-1 group/btn text-xs sm:text-sm"
+                        onClick={() => toast.info('Repositorio Privado', {
+                          description: 'El código fuente no está disponible públicamente por contener información sensible del proyecto.',
+                          duration: 5000,
+                        })}
+                      >
+                        <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+                        Ver en GitHub
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="flex-1 group/btn text-xs sm:text-sm"
+                        asChild
+                      >
+                        <a
+                          href={selectedProject.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 group-hover/btn:rotate-12 transition-transform" />
+                          Ver en GitHub
+                        </a>
+                      </Button>
+                    )}
+                    {selectedProject.liveUrl.includes('github.com') ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 cursor-not-allowed opacity-60 text-xs sm:text-sm"
+                        disabled
+                      >
+                        <span>🚀 Pronto</span>
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 group/btn text-xs sm:text-sm"
+                        asChild
+                      >
+                        <a
+                          href={selectedProject.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 group-hover/btn:translate-x-0.5 transition-transform" />
+                          Ver proyecto
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* CTA */}
         <motion.div

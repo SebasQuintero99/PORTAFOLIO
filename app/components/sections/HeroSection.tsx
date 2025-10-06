@@ -136,7 +136,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl sm:text-2xl text-muted-foreground mb-6 leading-relaxed"
             >
-              Frontend Developer especializado en{" "}
+              Fullstack Developer especializado en{" "}
               <span className="text-primary font-semibold">React</span>,{" "}
               <span className="text-primary font-semibold">Next.js</span> y{" "}
               <span className="text-primary font-semibold">TypeScript</span>

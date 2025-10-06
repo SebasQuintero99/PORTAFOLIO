@@ -54,7 +54,7 @@ const itemVariants = {
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-20 lg:py-32 bg-secondary/5 overflow-hidden">
+    <section id="about" className="relative py-12 lg:py-16 bg-secondary/5 overflow-hidden">
       {/* Parallax Stars */}
       <ParallaxStars count={60} />
 
@@ -108,15 +108,7 @@ export default function AboutSection() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <div className="bg-primary/10 px-4 py-2 rounded-full">
-                <span className="text-sm font-medium text-primary">🎯 Orientado a resultados</span>
-              </div>
-              <div className="bg-secondary/10 px-4 py-2 rounded-full">
-                <span className="text-sm font-medium text-secondary">🚀 Innovación constante</span>
-              </div>
-              <div className="bg-accent/20 px-4 py-2 rounded-full">
-                <span className="text-sm font-medium">🤝 Trabajo en equipo</span>
-              </div>
+          
             </div>
           </motion.div>
 
@@ -130,8 +122,8 @@ export default function AboutSection() {
           >
             {values.map((value, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm">
-                  <CardContent className="p-6">
+                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-background/50 backdrop-blur-sm gap-0 py-0">
+                  <CardContent className="p-4">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0 p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
                         <value.icon className="w-6 h-6 text-primary" />
