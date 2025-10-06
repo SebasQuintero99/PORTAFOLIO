@@ -20,6 +20,15 @@ export const metadata: Metadata = {
   keywords: ["Frontend Developer", "React", "Next.js", "TypeScript", "JavaScript", "UI/UX", "Web Development"],
   authors: [{ name: "Sebastián Quintero" }],
   creator: "Sebastián Quintero",
+  icons: {
+    icon: [
+      { url: "/software-development.png" },
+      { url: "/software-development.png", sizes: "32x32", type: "image/png" },
+      { url: "/software-development.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/software-development.png",
+    apple: "/software-development.png",
+  },
   openGraph: {
     type: "website",
     locale: "es_ES",
