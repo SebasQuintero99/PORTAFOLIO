@@ -70,7 +70,7 @@ export default function HeroSection() {
               <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-background">
                 <img
                   src="/avatar-Photoroom.png"
-                  alt="Sebastián Quintero"
+                  alt="Juan Sebastian Quintero Ortiz - Ingeniero de Software"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
               <span className="bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">
-                Sebastián Quintero
+                Juan Sebastian Quintero Ortiz
               </span>
             </motion.h1>
 
@@ -136,10 +136,17 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl sm:text-2xl text-muted-foreground mb-6 leading-relaxed"
             >
-              Fullstack Developer especializado en{" "}
-              <span className="text-primary font-semibold">React</span>,{" "}
-              <span className="text-primary font-semibold">Next.js</span> y{" "}
-              <span className="text-primary font-semibold">TypeScript</span>
+              Ingeniero de Software | Full-Stack Developer
+            </motion.p>
+
+            {/* Education and Specialization */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="text-lg text-muted-foreground mb-4 leading-relaxed"
+            >
+              Universidad Surcolombiana | Neiva, Huila, Colombia
             </motion.p>
 
             {/* Description */}
@@ -149,9 +156,13 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-lg text-muted-foreground/80 mb-10 leading-relaxed"
             >
-              Transformo ideas en experiencias digitales excepcionales.
-              Apasionado por crear interfaces intuitivas y código limpio que impacte positivamente a los usuarios.
-              Mi enfoque está en crear productos que no solo se vean bien, sino que también ofrezcan una experiencia de usuario excepcional.
+              Especializado en <span className="text-primary font-semibold">React</span>,{" "}
+              <span className="text-primary font-semibold">Next.js</span>,{" "}
+              <span className="text-primary font-semibold">TypeScript</span>,{" "}
+              <span className="text-primary font-semibold">Node.js</span> y{" "}
+              <span className="text-primary font-semibold">PostgreSQL</span>.
+              Transformo ideas en soluciones digitales robustas y escalables,
+              creando sistemas empresariales y aplicaciones web que generan impacto real.
             </motion.p>
 
             {/* CTA Buttons */}

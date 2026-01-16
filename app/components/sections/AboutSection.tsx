@@ -76,8 +76,9 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Soy un desarrollador frontend apasionado por crear experiencias web excepcionales. 
-            Con más de 1 años de experiencia, me especializo en tecnologías modernas como React, Next.js y TypeScript.
+            Soy <strong>Ingeniero de Software</strong> graduado de la <strong>Universidad Surcolombiana de Neiva, Huila, Colombia</strong>,
+            especializado en <strong>desarrollo Full-Stack</strong> con React, Next.js, TypeScript, Node.js y PostgreSQL.
+            Apasionado por crear experiencias web excepcionales y soluciones empresariales robustas.
           </p>
         </motion.div>
 
@@ -92,18 +93,21 @@ export default function AboutSection() {
             <h3 className="text-2xl font-bold mb-6">Mi Historia</h3>
             <div className="space-y-6 text-muted-foreground">
               <p className="leading-relaxed">
-                Mi viaje en el desarrollo web comenzó con la curiosidad de entender cómo funcionan las cosas. 
-                Lo que empezó como un hobby se convirtió en una pasión que me impulsa todos los días a aprender 
-                y crear soluciones innovadoras.
+                Como <strong>Ingeniero de Software</strong> graduado de la <strong>Universidad Surcolombiana</strong>,
+                mi viaje en el desarrollo web comenzó con la curiosidad de entender cómo funciona la tecnología.
+                Durante mi formación académica en <strong>Neiva, Huila</strong>, desarrollé una sólida base en
+                programación, arquitectura de software y mejores prácticas de desarrollo.
               </p>
               <p className="leading-relaxed">
-                Me enfoco en el desarrollo frontend porque creo firmemente que la tecnología debe ser accesible 
-                y fácil de usar. Cada línea de código que escribo tiene el propósito de mejorar la vida de las 
-                personas que interactúan con mis aplicaciones.
+                Me especializo en <strong>desarrollo Full-Stack</strong>, combinando mi experiencia en frontend
+                con React y Next.js, con habilidades backend en Node.js y PostgreSQL. He desarrollado más de
+                <strong> 8 proyectos empresariales</strong>, incluyendo portales inmobiliarios, sistemas de
+                evaluación de desempeño, gestión de permisos y aplicaciones legales.
               </p>
               <p className="leading-relaxed">
-                Cuando no estoy programando, disfruto explorando nuevas tecnologías, contribuyendo a proyectos 
-                de código abierto, y compartiendo conocimientos con la comunidad de desarrolladores.
+                Cuando no estoy programando, disfruto explorando nuevas tecnologías como Docker, Playwright y
+                Framer Motion, contribuyendo a proyectos de código abierto, y compartiendo conocimientos con la
+                comunidad de desarrolladores en <strong>Colombia</strong>.
               </p>
             </div>
 
@@ -154,15 +158,15 @@ export default function AboutSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">1+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">3+</div>
               <p className="text-sm text-muted-foreground">Años de experiencia</p>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">7+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">8+</div>
               <p className="text-sm text-muted-foreground">Proyectos completados</p>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">10+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">20+</div>
               <p className="text-sm text-muted-foreground">Tecnologías dominadas</p>
             </div>
             <div className="space-y-2">
