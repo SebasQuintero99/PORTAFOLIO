@@ -39,6 +39,17 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
     [count]
   );
 
+  // Generar estrellas fugaces una sola vez con useMemo
+  const shootingStars = useMemo(() =>
+    [1, 2, 3].map((i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 50,
+      repeatDelay: 8 + i * 5,
+    })),
+    []
+  );
+
   return (
     <div ref={containerRef} className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       {stars.map((star) => (
@@ -73,7 +84,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
               opacity: [0.5, 1, 0.5],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 3 + star.delay,
               repeat: Infinity,
               ease: "easeInOut",
               delay: star.delay,
@@ -83,13 +94,13 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
       ))}
 
       {/* Estrellas fugaces ocasionales */}
-      {[1, 2, 3].map((i) => (
+      {shootingStars.map((star) => (
         <motion.div
-          key={`shooting-${i}`}
+          key={`shooting-${star.id}`}
           className="absolute w-1 h-1 bg-primary/70 dark:bg-primary rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 50}%`,
+            left: `${star.x}%`,
+            top: `${star.y}%`,
           }}
           initial={{ opacity: 0, x: 0, y: 0, scaleX: 1 }}
           animate={{
@@ -101,7 +112,7 @@ export default function ParallaxStars({ count = 80, className = "" }: ParallaxSt
           transition={{
             duration: 1.5,
             repeat: Infinity,
-            repeatDelay: 8 + i * 5,
+            repeatDelay: star.repeatDelay,
             ease: "easeOut",
           }}
         >
