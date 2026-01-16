@@ -41,8 +41,13 @@ import {
   SiGraphql,
   SiPrisma,
   SiSupabase,
+  SiFramer,
+  SiLeaflet,
+  SiCloudflare,
+  SiDocker,
+  SiZod,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
+import { TbApi, TbDatabase, TbTestPipe } from "react-icons/tb";
 
 const technicalSkills = [
   {
@@ -67,34 +72,34 @@ const technicalSkills = [
       { name: "VS Code", icon: Code2, color: "#007ACC" },
       { name: "Vite", icon: SiVite, color: "#646CFF" },
       { name: "Webpack", icon: SiWebpack, color: "#8DD6F9" },
-      { name: "ESLint", icon: SiEslint, color: "#4B32C3" },
-      { name: "Prettier", icon: SiPrettier, color: "#F7B93E" },
+      { name: "Playwright", icon: TbTestPipe, color: "#2EAD33" },
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
     ],
   },
-  // {
-  //   category: "Librerías & Frameworks",
-  //   skills: [
-  //     { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
-  //     { name: "Zustand", icon: TbDatabase, color: "#443E38" },
-  //     { name: "React Hook Form", icon: FaReact, color: "#EC5990" },
-  //     { name: "Zod", icon: Code2, color: "#3E67B1" },
-  //     { name: "Shadcn/ui", icon: Palette, color: "#000000" },
-  //     { name: "Lucide Icons", icon: Zap, color: "#F56565" },
-  //     { name: "Chart.js", icon: FaDatabase, color: "#FF6384" },
-  //     { name: "Three.js", icon: Code2, color: "#000000" },
-  //   ],
-  // },
+  {
+    category: "Librerías & Frameworks",
+    skills: [
+      { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+      { name: "Zustand", icon: TbDatabase, color: "#443E38" },
+      { name: "React Hook Form", icon: FaReact, color: "#EC5990" },
+      { name: "Zod", icon: SiZod, color: "#3E67B1" },
+      { name: "Leaflet", icon: SiLeaflet, color: "#199900" },
+      { name: "Shadcn/ui", icon: Palette, color: "#000000" },
+      { name: "Lucide Icons", icon: Zap, color: "#F56565" },
+      { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+    ],
+  },
   {
     category: "Backend & Databases",
     skills: [
       { name: "Node.js", icon: FaNodeJs, color: "#339933" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
       { name: "API REST", icon: TbApi, color: "#FF6B35" },
       { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
-      { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
-      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+      { name: "Cloudflare R2", icon: SiCloudflare, color: "#F38020" },
     ],
   },
 ];
@@ -222,7 +227,7 @@ export default function SkillsSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 xl:grid-cols-4 gap-8"
           >
             {technicalSkills.map((category, categoryIndex) => (
               <motion.div
@@ -340,13 +345,13 @@ export default function SkillsSection() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                "Three.js", 
-                "React Native", 
-                "Rust", 
-                "WebAssembly", 
+                "Three.js",
+                "React Native",
+                "Rust",
+                "WebAssembly",
                 "AI/ML Integration",
                 "Web3",
-                "Docker"
+                "Kubernetes"
               ].map((skill, index) => (
                 <motion.span
                   key={skill}

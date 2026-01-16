@@ -11,6 +11,43 @@ import { useState, useEffect } from "react";
 
 const projects = [
   {
+    title: "Portal Web Inmobiliario - León Aguilera",
+    description: "Portal inmobiliario empresarial con catálogo dinámico de proyectos, filtros avanzados, mapas interactivos con geocodificación, chatbot para captura de leads y sistema completo de seguridad web.",
+    image: "/leonaguilera.png",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Supabase", "PostgreSQL", "Leaflet", "Cloudflare R2", "Playwright"],
+    features: [
+      "Catálogo dinámico con filtros avanzados",
+      "Mapas interactivos con geocodificación automática",
+      "Chatbot conversacional para captura de leads",
+      "Formularios con reCAPTCHA v3 y rate limiting",
+      "Testing E2E con Playwright",
+      "Optimización con Sharp y CDN Cloudflare R2"
+    ],
+    liveUrl: "https://leonaguilera.com",
+    githubUrl: "https://github.com/SebasQuintero99/portal-inmobiliario",
+    status: "Completado",
+    category: "Full-Stack"
+  },
+  {
+    title: "Sistema de Evaluación de Desempeño - APP-TH",
+    description: "Aplicación completa para gestión de evaluaciones de desempeño laboral 360° con 25 criterios en 7 categorías, dashboard analítico, sistema de roles y auditoría automatizada.",
+    image: "/appth.png",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "React Hook Form", "Zod", "Supabase", "PostgreSQL", "Docker"],
+    features: [
+      "Evaluaciones 360° bidireccionales",
+      "Dashboard analítico con estadísticas",
+      "Sistema de roles con Row Level Security",
+      "Carga masiva de usuarios vía CSV",
+      "Sistema de auditoría con triggers",
+      "Flujo de firmas digitales",
+      "Containerizado con Docker"
+    ],
+    liveUrl: "https://empleados.leonaguilera.com",
+    githubUrl: "https://github.com/SebasQuintero99/app-evaluacion-desempeno",
+    status: "Completado",
+    category: "Full-Stack"
+  },
+  {
     title: "MiAbogada - Sistema Legal",
     description: "Sistema web completo para gestión de citas legales con integración a Google Calendar, panel administrativo dinámico y notificaciones automáticas por email.",
     image: "/miAbogada.png",
